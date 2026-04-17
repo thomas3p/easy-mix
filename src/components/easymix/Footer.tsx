@@ -1,8 +1,9 @@
 import { Facebook, Phone, MessageCircle, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 import logo from "@/assets/easymix-logo.png";
 
 const Footer = () => (
-  <footer id="contact" className="bg-muted/40 pt-16 pb-8 border-t border-border">
+  <footer className="bg-muted/40 pt-16 pb-8 border-t border-border">
     <div className="container mx-auto">
       <div className="grid md:grid-cols-4 gap-10 mb-12">
         <div className="md:col-span-1">
@@ -15,19 +16,20 @@ const Footer = () => (
         <div>
           <h4 className="font-bold mb-4">เมนู</h4>
           <ul className="space-y-2 text-sm text-muted-foreground">
-            <li><a href="#products" className="hover:text-primary transition-smooth">สินค้า</a></li>
-            <li><a href="#recipes" className="hover:text-primary transition-smooth">สูตรอาหาร</a></li>
-            <li><a href="#about" className="hover:text-primary transition-smooth">เกี่ยวกับแบรนด์</a></li>
-            <li><a href="#blog" className="hover:text-primary transition-smooth">บทความ</a></li>
+            <li><Link to="/products" className="hover:text-primary transition-smooth">สินค้า</Link></li>
+            <li><Link to="/recipes" className="hover:text-primary transition-smooth">สูตรอาหาร</Link></li>
+            <li><Link to="/shop" className="hover:text-primary transition-smooth">ร้านค้า</Link></li>
+            <li><Link to="/about" className="hover:text-primary transition-smooth">เกี่ยวกับแบรนด์</Link></li>
+            <li><Link to="/blog" className="hover:text-primary transition-smooth">บทความ</Link></li>
           </ul>
         </div>
 
         <div>
           <h4 className="font-bold mb-4">ช่วยเหลือ</h4>
           <ul className="space-y-2 text-sm text-muted-foreground">
-            <li><a href="#" className="hover:text-primary transition-smooth">วิธีใช้ผลิตภัณฑ์</a></li>
-            <li><a href="#" className="hover:text-primary transition-smooth">คำถามที่พบบ่อย</a></li>
-            <li><a href="#" className="hover:text-primary transition-smooth">การจัดส่ง</a></li>
+            <li><Link to="/how-to" className="hover:text-primary transition-smooth">วิธีใช้ผลิตภัณฑ์</Link></li>
+            <li><Link to="/how-to" className="hover:text-primary transition-smooth">คำถามที่พบบ่อย</Link></li>
+            <li><Link to="/contact" className="hover:text-primary transition-smooth">ติดต่อเรา</Link></li>
             <li><a href="#" className="hover:text-primary transition-smooth">นโยบายความเป็นส่วนตัว</a></li>
           </ul>
         </div>
