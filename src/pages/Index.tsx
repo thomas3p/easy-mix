@@ -5,6 +5,7 @@ import Products from "@/components/easymix/Products";
 import Recipes from "@/components/easymix/Recipes";
 import About from "@/components/easymix/About";
 import CTA from "@/components/easymix/CTA";
+import WhereToBuy from "@/components/easymix/WhereToBuy";
 import Footer from "@/components/easymix/Footer";
 
 const Index = () => {
@@ -17,6 +18,7 @@ const Index = () => {
         <Products />
         <Recipes />
         <About />
+        <WhereToBuy />
         <CTA />
       </main>
       <Footer />

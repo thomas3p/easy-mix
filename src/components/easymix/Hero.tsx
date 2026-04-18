@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroImg from "@/assets/hero-thai-food.jpg";
 
 const Hero = () => (
@@ -22,12 +23,12 @@ const Hero = () => (
             ไม่ว่าจะมื้อเร่งรีบหรือมื้อพิเศษ Easy Mix ช่วยเติมเต็มทุกจานให้กลายเป็นช่วงเวลาดีๆ
           </p>
           <div className="flex flex-wrap gap-4">
-            <a href="#shop" className="inline-flex items-center gap-2 gradient-red text-primary-foreground px-7 py-3.5 rounded-full font-semibold shadow-red hover:scale-105 transition-smooth">
-              สั่งซื้อเลย <ArrowRight className="h-4 w-4" />
-            </a>
-            <a href="#recipes" className="inline-flex items-center gap-2 bg-foreground text-background px-7 py-3.5 rounded-full font-semibold hover:bg-foreground/90 transition-smooth">
+            <Link to="/where-to-buy" className="inline-flex items-center gap-2 gradient-red text-primary-foreground px-7 py-3.5 rounded-full font-semibold shadow-red hover:scale-105 transition-smooth">
+              ดูช่องทางการซื้อ <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link to="/recipes" className="inline-flex items-center gap-2 bg-foreground text-background px-7 py-3.5 rounded-full font-semibold hover:bg-foreground/90 transition-smooth">
               ดูสูตรอาหาร
-            </a>
+            </Link>
           </div>
         </div>
       </div>

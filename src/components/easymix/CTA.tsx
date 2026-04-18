@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const CTA = () => (
   <section className="py-20">
     <div className="container mx-auto">
@@ -10,16 +12,16 @@ const CTA = () => (
               พร้อมเริ่มมื้อ<br />อร่อยแบบ <span className="text-primary">Easy</span> หรือยัง?
             </h2>
             <p className="text-background/70 text-lg">
-              สั่งซื้อ Easy Mix วันนี้ รับส่วนลดพิเศษ 15% สำหรับลูกค้าใหม่
+              หา Easy Mix ได้ที่ Shopee, Lazada, LINE, Lotus's, 7-Eleven และอีกมากมาย
             </p>
           </div>
           <div className="flex flex-wrap gap-4 md:justify-end">
-            <a href="#shop" className="gradient-red text-primary-foreground px-8 py-4 rounded-full font-semibold shadow-red hover:scale-105 transition-smooth">
-              สั่งซื้อตอนนี้
-            </a>
-            <a href="#contact" className="border-2 border-background text-background px-8 py-4 rounded-full font-semibold hover:bg-background hover:text-foreground transition-smooth">
+            <Link to="/where-to-buy" className="gradient-red text-primary-foreground px-8 py-4 rounded-full font-semibold shadow-red hover:scale-105 transition-smooth">
+              ดูช่องทางการซื้อ
+            </Link>
+            <Link to="/contact" className="border-2 border-background text-background px-8 py-4 rounded-full font-semibold hover:bg-background hover:text-foreground transition-smooth">
               ติดต่อเรา
-            </a>
+            </Link>
           </div>
         </div>
       </div>

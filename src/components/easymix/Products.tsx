@@ -1,14 +1,12 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ShoppingCart } from "lucide-react";
-import { toast } from "sonner";
 import { products } from "@/data/products";
 
-const tabs = ["ทั้งหมด", "ยอดฮิต", "ใหม่"];
+const tabs = ["ทั้งหมด", "ยอดฮิต", "ใหม่"] as const;
+
+import { useState } from "react";
 
 const Products = () => {
-  const [active, setActive] = useState("ทั้งหมด");
-
+  const [active, setActive] = useState<(typeof tabs)[number]>("ทั้งหมด");
   const filtered = active === "ทั้งหมด" ? products : products.filter((p) => p.tag === active);
 
   return (
@@ -33,37 +31,30 @@ const Products = () => {
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
           {filtered.map((p) => (
-            <article key={p.slug} className="group bg-card rounded-2xl overflow-hidden shadow-soft hover:shadow-card transition-smooth hover:-translate-y-1">
-              <Link to={`/products/${p.slug}`} className="block relative aspect-square bg-muted/40 overflow-hidden">
+            <Link
+              key={p.slug}
+              to={`/products/${p.slug}`}
+              className="group bg-card rounded-2xl overflow-hidden shadow-soft hover:shadow-card transition-smooth hover:-translate-y-1 block"
+            >
+              <div className="relative aspect-square bg-muted/40 overflow-hidden">
                 {p.badge && (
                   <span className="absolute top-3 left-3 z-10 gradient-red text-primary-foreground text-xs font-bold px-3 py-1 rounded-md shadow-red">
                     {p.badge}
                   </span>
                 )}
                 <img src={p.img} alt={p.name} loading="lazy" width={800} height={800} className="h-full w-full object-contain p-6 group-hover:scale-105 transition-smooth" />
-              </Link>
+              </div>
               <div className="p-5">
-                <h3 className="text-sm font-medium text-foreground line-clamp-2 min-h-[2.5rem] mb-3">
-                  <Link to={`/products/${p.slug}`} className="hover:text-primary transition-smooth">{p.name}</Link>
-                </h3>
+                <h3 className="text-sm font-medium text-foreground line-clamp-2 min-h-[2.5rem] mb-3 group-hover:text-primary transition-smooth">{p.name}</h3>
                 <div className="flex items-end justify-between">
                   <div className="flex items-baseline gap-2">
                     <span className="text-xl font-bold text-primary">฿ {p.price}</span>
                     {p.original && <span className="text-sm text-muted-foreground line-through">฿ {p.original}</span>}
                   </div>
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      toast.success(`เพิ่ม ${p.shortName} ลงในตะกร้าแล้ว`);
-                    }}
-                    aria-label="เพิ่มลงตะกร้า"
-                    className="h-9 w-9 rounded-full bg-foreground text-background flex items-center justify-center hover:bg-primary transition-smooth"
-                  >
-                    <ShoppingCart className="h-4 w-4" />
-                  </button>
+                  <span className="text-xs text-primary font-semibold">ดูรายละเอียด &gt;</span>
                 </div>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       </div>
