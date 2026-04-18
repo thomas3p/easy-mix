@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
+import { useSEO } from "@/hooks/useSEO";
 import Header from "@/components/easymix/Header";
 import Footer from "@/components/easymix/Footer";
 import { posts } from "@/data/posts";
 
 const Blog = () => {
+  useSEO({ title: "บทความและไอเดีย", description: "บทความเรื่องอาหาร ไลฟ์สไตล์ และเคล็ดลับครัวจาก Easy Mix" });
+
   return (
     <div className="min-h-screen bg-background">
       <Header />

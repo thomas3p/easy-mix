@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import SpatulaCursor from "@/components/easymix/SpatulaCursor";
 import ScrollToTop from "@/components/ScrollToTop";
+import ErrorBoundary from "@/components/ErrorBoundary";
 import Index from "./pages/Index.tsx";
 import ProductsPage from "./pages/Products.tsx";
 import ProductDetail from "./pages/ProductDetail.tsx";
@@ -26,7 +27,8 @@ const App = () => (
       <SpatulaCursor />
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <ErrorBoundary>
+      <BrowserRouter basename="/easy-mix">
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
@@ -45,6 +47,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
+      </ErrorBoundary>
     </TooltipProvider>
   </QueryClientProvider>
 );

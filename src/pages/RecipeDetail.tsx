@@ -1,4 +1,5 @@
 import { Link, useParams } from "react-router-dom";
+import { useSEO } from "@/hooks/useSEO";
 import { ArrowLeft, Clock, Users, ChefHat } from "lucide-react";
 import Header from "@/components/easymix/Header";
 import Footer from "@/components/easymix/Footer";
@@ -25,6 +26,8 @@ const RecipeDetail = () => {
 
   const related = recipes.filter((r) => r.slug !== recipe.slug).slice(0, 2);
 
+  useSEO({ title: recipe.title, description: recipe.desc });
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -43,8 +46,8 @@ const RecipeDetail = () => {
         </section>
 
         <section className="py-12">
-          <div className="container mx-auto grid lg:grid-cols-2 gap-10">
-            <div className="rounded-3xl overflow-hidden shadow-card">
+          <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-6 md:gap-10">
+            <div className="rounded-2xl md:rounded-3xl overflow-hidden shadow-card aspect-[4/3] md:aspect-auto">
               <img src={recipe.img} alt={recipe.title} className="w-full h-full object-cover" />
             </div>
             <div className="space-y-8">
@@ -82,7 +85,7 @@ const RecipeDetail = () => {
         </section>
 
         <section className="py-12 bg-muted/30">
-          <div className="container mx-auto max-w-3xl">
+          <div className="container mx-auto px-4 max-w-3xl">
             <h2 className="text-3xl font-extrabold mb-8 text-center">วิธีทำ</h2>
             <ol className="space-y-4">
               {recipe.steps.map((s, i) => (

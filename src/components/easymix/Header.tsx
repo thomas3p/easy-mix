@@ -16,7 +16,6 @@ const navItems = [
 
 const Header = () => {
   const [open, setOpen] = useState(false);
-  const [lang, setLang] = useState<"TH" | "EN">("TH");
   const { pathname } = useLocation();
 
   return (
@@ -46,27 +45,23 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-4">
-          <button
-            onClick={() => setLang(lang === "TH" ? "EN" : "TH")}
-            className="hidden sm:flex text-sm font-medium text-foreground hover:text-primary transition-smooth"
-            aria-label="Switch language"
-          >
-            <span className={lang === "TH" ? "text-primary" : ""}>TH</span>
-            <span className="mx-1.5 text-muted-foreground">|</span>
-            <span className={lang === "EN" ? "text-primary" : ""}>EN</span>
-          </button>
           <Link
             to="/where-to-buy"
-            className="hidden md:inline-flex items-center gap-1.5 gradient-red text-primary-foreground px-4 py-2 rounded-full text-sm font-semibold shadow-red hover:scale-105 transition-smooth"
+            className="hidden md:inline-flex items-center gap-1.5 gradient-red text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-red-sm cta-scale"
           >
             ซื้อเลย
           </Link>
-          <button onClick={() => setOpen(!open)} className="lg:hidden p-2" aria-label="Menu">
+          <button
+            onClick={() => setOpen(!open)}
+            className="lg:hidden p-2"
+            aria-label={open ? "ปิดเมนู" : "เปิดเมนู"}
+          >
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
       </div>
 
+      {/* Mobile menu */}
       {open && (
         <nav className="lg:hidden border-t border-border bg-background">
           <div className="container mx-auto py-4 flex flex-col gap-1">
@@ -75,13 +70,22 @@ const Header = () => {
                 key={item.to}
                 to={item.to}
                 onClick={() => setOpen(false)}
-                className={`py-2.5 text-sm font-medium transition-smooth ${
-                  pathname === item.to ? "text-primary" : "hover:text-primary"
+                className={`py-2.5 px-2 text-sm font-medium rounded-lg transition-smooth ${
+                  pathname === item.to
+                    ? "text-primary bg-primary/5"
+                    : "text-foreground hover:text-primary hover:bg-muted"
                 }`}
               >
                 {item.label}
               </Link>
             ))}
+            <Link
+              to="/where-to-buy"
+              onClick={() => setOpen(false)}
+              className="mt-2 gradient-red text-white text-center py-3 rounded-full font-bold text-sm shadow-red-sm"
+            >
+              ซื้อเลย
+            </Link>
           </div>
         </nav>
       )}

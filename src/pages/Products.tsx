@@ -1,8 +1,11 @@
 import Header from "@/components/easymix/Header";
+import { useSEO } from "@/hooks/useSEO";
 import Footer from "@/components/easymix/Footer";
 import Products from "@/components/easymix/Products";
 
 const ProductsPage = () => {
+  useSEO({ title: "สินค้าทั้งหมด", description: "เลือกซื้อซอส Easy Mix ขนาดและแพ็คที่เหมาะกับครัวของคุณ" });
+
   return (
     <div className="min-h-screen bg-background">
       <Header />

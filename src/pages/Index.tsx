@@ -1,4 +1,5 @@
 import Header from "@/components/easymix/Header";
+import { useSEO } from "@/hooks/useSEO";
 import Hero from "@/components/easymix/Hero";
 import Features from "@/components/easymix/Features";
 import Products from "@/components/easymix/Products";
@@ -9,6 +10,8 @@ import WhereToBuy from "@/components/easymix/WhereToBuy";
 import Footer from "@/components/easymix/Footer";
 
 const Index = () => {
+  useSEO({ title: "หน้าหลัก", description: "ซอสปรุงรสสูตรเชฟ ทำอาหารอร่อยง่าย ประหยัดเวลา รสชาติเข้มข้นทุกจาน" });
+
   return (
     <div className="min-h-screen bg-background">
       <Header />

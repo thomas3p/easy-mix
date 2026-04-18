@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSEO } from "@/hooks/useSEO";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, Check, Truck, ShieldCheck, Clock, ShoppingBag } from "lucide-react";
 import Header from "@/components/easymix/Header";
@@ -28,6 +29,8 @@ const ProductDetail = () => {
 
   const related = products.filter((p) => p.slug !== product.slug).slice(0, 4);
 
+  useSEO({ title: product.name, description: product.description });
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -41,14 +44,14 @@ const ProductDetail = () => {
         </section>
 
         <section className="py-12">
-          <div className="container mx-auto grid lg:grid-cols-2 gap-12">
-            <div className="bg-muted/30 rounded-3xl p-8 md:p-12 flex items-center justify-center relative">
+          <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-8 md:gap-12">
+            <div className="bg-muted/30 rounded-2xl md:rounded-3xl p-6 md:p-12 flex items-center justify-center relative">
               {product.badge && (
                 <span className="absolute top-6 left-6 gradient-red text-primary-foreground text-xs font-bold px-3 py-1.5 rounded-md shadow-red">
                   {product.badge}
                 </span>
               )}
-              <img src={product.img} alt={product.name} className="max-h-[480px] w-auto object-contain" />
+              <img src={product.img} alt={product.name} className="max-h-[300px] md:max-h-[480px] w-auto object-contain" />
             </div>
 
             <div>
@@ -64,7 +67,7 @@ const ProductDetail = () => {
               <p className="text-foreground/80 leading-relaxed mb-6">{product.description}</p>
 
               <div className="flex items-baseline gap-3 mb-6">
-                <span className="text-4xl font-extrabold text-primary">฿{product.price}</span>
+                <span className="text-3xl md:text-4xl font-extrabold text-primary">฿{product.price}</span>
                 {product.original && (
                   <span className="text-lg text-muted-foreground line-through">฿{product.original}</span>
                 )}
@@ -120,7 +123,7 @@ const ProductDetail = () => {
         </section>
 
         <section className="py-12 bg-muted/30 border-y border-border">
-          <div className="container mx-auto max-w-4xl">
+          <div className="container mx-auto px-4 max-w-4xl">
             <div className="flex gap-2 mb-6 border-b border-border">
               {[
                 { id: "desc", label: "รายละเอียด" },

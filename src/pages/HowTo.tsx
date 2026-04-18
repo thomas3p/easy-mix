@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSEO } from "@/hooks/useSEO";
 import { ChevronDown } from "lucide-react";
 import Header from "@/components/easymix/Header";
 import Footer from "@/components/easymix/Footer";
@@ -18,6 +19,8 @@ const faqs = [
 
 const HowTo = () => {
   const [open, setOpen] = useState<number | null>(0);
+
+  useSEO({ title: "วิธีใช้และเคล็ดลับ", description: "วิธีใช้ซอส Easy Mix และเคล็ดลับการทำอาหารให้อร่อยทุกเมนู" });
 
   return (
     <div className="min-h-screen bg-background">

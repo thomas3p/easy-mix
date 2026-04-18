@@ -6,11 +6,13 @@
  * ระหว่างรอรูป จะแสดง placeholder gradient สีแดง
  */
 import { Link } from "react-router-dom";
+import { useSEO } from "@/hooks/useSEO";
 import Header from "@/components/easymix/Header";
 import Footer from "@/components/easymix/Footer";
 
 // ── swap รูปเชฟที่นี่เมื่อมีรูปจริง ─────────────────────
 import chefImg from "@/assets/chef-chon.jpg";
+// const chefImg = ""; // ← ใส่ path รูปจริงตอนมีไฟล์
 
 // ── Awards / Credentials ────────────────────────────────
 const awards = [
@@ -95,6 +97,8 @@ const reasons = [
 ];
 
 const AboutPage = () => {
+  useSEO({ title: "เกี่ยวกับ Easy Mix", description: "เรื่องราวของเชฟชล จากครัวโรงแรมห้าดาวสู่ครัวบ้านคุณ" });
+
   return (
     <div className="min-h-screen bg-background">
       <Header />

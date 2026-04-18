@@ -1,8 +1,11 @@
 import Header from "@/components/easymix/Header";
+import { useSEO } from "@/hooks/useSEO";
 import Footer from "@/components/easymix/Footer";
 import WhereToBuy from "@/components/easymix/WhereToBuy";
 
 const WhereToBuyPage = () => {
+  useSEO({ title: "ช่องทางการซื้อ", description: "ซื้อ Easy Mix ได้ที่ Shopee Lazada LINE Lotus's Big C 7-Eleven และ Makro" });
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
