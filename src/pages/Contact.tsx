@@ -37,7 +37,7 @@ const Contact = () => {
                   { icon: MessageCircle, label: "LINE", val: "@easymix" },
                   { icon: Facebook, label: "Facebook", val: "EasyMix Official" },
                   { icon: Mail, label: "Email", val: "hello@easymix.co" },
-                  { icon: MapPin, label: "ที่อยู่", val: "99/1 ถ.พระราม 9 กรุงเทพฯ 10310" },
+                  { icon: MapPin, label: "ที่อยู่", val: "99, 99/1, 99/2 ฟ้าฮ่าม เมืองเชียงใหม่ เชียงใหม่ 50000" },
                 ].map((c) => (
                   <li key={c.label} className="flex gap-4 bg-card p-4 rounded-2xl shadow-soft">
                     <span className="h-11 w-11 rounded-full gradient-red flex items-center justify-center shrink-0">
@@ -53,7 +53,7 @@ const Contact = () => {
               <div className="aspect-[16/10] rounded-2xl overflow-hidden shadow-soft">
                 <iframe
                   title="map"
-                  src="https://www.google.com/maps?q=Bangkok&output=embed"
+                  src="https://www.google.com/maps?q=ChiangMai&output=embed"
                   className="w-full h-full border-0"
                   loading="lazy"
                 />
