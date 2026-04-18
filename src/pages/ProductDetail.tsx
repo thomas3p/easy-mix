@@ -1,15 +1,14 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, Minus, Plus, ShoppingCart, Check, Truck, ShieldCheck, Clock } from "lucide-react";
-import { toast } from "sonner";
+import { ArrowLeft, Check, Truck, ShieldCheck, Clock, ShoppingBag } from "lucide-react";
 import Header from "@/components/easymix/Header";
 import Footer from "@/components/easymix/Footer";
+import WhereToBuy from "@/components/easymix/WhereToBuy";
 import { getProduct, products } from "@/data/products";
 
 const ProductDetail = () => {
   const { slug } = useParams();
   const product = slug ? getProduct(slug) : undefined;
-  const [qty, setQty] = useState(1);
   const [tab, setTab] = useState<"desc" | "usage" | "nutrition">("desc");
 
   if (!product) {
@@ -28,10 +27,6 @@ const ProductDetail = () => {
   }
 
   const related = products.filter((p) => p.slug !== product.slug).slice(0, 4);
-
-  const addToCart = () => {
-    toast.success(`เพิ่ม ${product.shortName} จำนวน ${qty} ลงในตะกร้าแล้ว`);
-  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -73,6 +68,7 @@ const ProductDetail = () => {
                 {product.original && (
                   <span className="text-lg text-muted-foreground line-through">฿{product.original}</span>
                 )}
+                <span className="text-xs text-muted-foreground ml-1">ราคาแนะนำ</span>
               </div>
 
               <div className="grid grid-cols-2 gap-3 mb-6">
@@ -98,43 +94,17 @@ const ProductDetail = () => {
                 </ul>
               </div>
 
-              <div className="flex items-center gap-3 mb-5">
-                <div className="flex items-center border border-border rounded-full overflow-hidden">
-                  <button
-                    onClick={() => setQty(Math.max(1, qty - 1))}
-                    className="h-11 w-11 flex items-center justify-center hover:bg-muted transition-smooth"
-                    aria-label="ลดจำนวน"
-                  >
-                    <Minus className="h-4 w-4" />
-                  </button>
-                  <span className="w-12 text-center font-bold">{qty}</span>
-                  <button
-                    onClick={() => setQty(qty + 1)}
-                    className="h-11 w-11 flex items-center justify-center hover:bg-muted transition-smooth"
-                    aria-label="เพิ่มจำนวน"
-                  >
-                    <Plus className="h-4 w-4" />
-                  </button>
-                </div>
-                <button
-                  onClick={addToCart}
-                  className="flex-1 h-11 gradient-red text-primary-foreground font-bold rounded-full inline-flex items-center justify-center gap-2 shadow-red hover:opacity-90 transition-smooth"
-                >
-                  <ShoppingCart className="h-5 w-5" /> เพิ่มลงตะกร้า
-                </button>
-              </div>
-
               <Link
-                to="/shop"
-                className="block w-full h-11 border-2 border-foreground text-foreground font-bold rounded-full inline-flex items-center justify-center hover:bg-foreground hover:text-background transition-smooth"
+                to="/where-to-buy"
+                className="w-full h-12 gradient-red text-primary-foreground font-bold rounded-full inline-flex items-center justify-center gap-2 shadow-red hover:scale-[1.02] transition-smooth"
               >
-                ซื้อเลย
+                <ShoppingBag className="h-5 w-5" /> ดูช่องทางการซื้อ
               </Link>
 
               <div className="grid grid-cols-3 gap-3 mt-6 pt-6 border-t border-border text-center text-xs">
                 <div>
                   <Truck className="h-5 w-5 mx-auto mb-1 text-primary" />
-                  <span className="text-muted-foreground">ส่งฟรีเมื่อสั่ง ฿500</span>
+                  <span className="text-muted-foreground">มีจำหน่ายทั่วประเทศ</span>
                 </div>
                 <div>
                   <ShieldCheck className="h-5 w-5 mx-auto mb-1 text-primary" />
@@ -142,7 +112,7 @@ const ProductDetail = () => {
                 </div>
                 <div>
                   <Clock className="h-5 w-5 mx-auto mb-1 text-primary" />
-                  <span className="text-muted-foreground">ส่งใน 1-3 วัน</span>
+                  <span className="text-muted-foreground">หาซื้อได้ทุกที่</span>
                 </div>
               </div>
             </div>
@@ -209,7 +179,9 @@ const ProductDetail = () => {
           </div>
         </section>
 
-        <section className="py-16">
+        <WhereToBuy compact title="ซื้อสินค้านี้ได้ที่" subtitle="เลือกร้านค้าออนไลน์หรือร้านค้าปลีกใกล้คุณ" />
+
+        <section className="py-16 bg-muted/30 border-t border-border">
           <div className="container mx-auto">
             <h2 className="text-2xl md:text-3xl font-extrabold mb-6">สินค้าอื่นที่น่าสนใจ</h2>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
