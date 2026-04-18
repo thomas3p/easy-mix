@@ -18,7 +18,7 @@ const Footer = () => (
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li><Link to="/products" className="hover:text-primary transition-smooth">สินค้า</Link></li>
             <li><Link to="/recipes" className="hover:text-primary transition-smooth">สูตรอาหาร</Link></li>
-            <li><Link to="/shop" className="hover:text-primary transition-smooth">ร้านค้า</Link></li>
+            <li><Link to="/where-to-buy" className="hover:text-primary transition-smooth">ช่องทางการซื้อ</Link></li>
             <li><Link to="/about" className="hover:text-primary transition-smooth">เกี่ยวกับแบรนด์</Link></li>
             <li><Link to="/blog" className="hover:text-primary transition-smooth">บทความ</Link></li>
           </ul>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X, ShoppingCart } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "@/assets/easymix-logo.png";
 
@@ -7,7 +7,7 @@ const navItems = [
   { label: "หน้าหลัก", to: "/" },
   { label: "สินค้า", to: "/products" },
   { label: "สูตรอาหาร", to: "/recipes" },
-  { label: "ร้านค้า", to: "/shop" },
+  { label: "ช่องทางการซื้อ", to: "/where-to-buy" },
   { label: "เกี่ยวกับ", to: "/about" },
   { label: "วิธีใช้", to: "/how-to" },
   { label: "บทความ", to: "/blog" },
@@ -55,9 +55,11 @@ const Header = () => {
             <span className="mx-1.5 text-muted-foreground">|</span>
             <span className={lang === "EN" ? "text-primary" : ""}>EN</span>
           </button>
-          <Link to="/shop" aria-label="Cart" className="relative p-2 text-foreground hover:text-primary transition-smooth">
-            <ShoppingCart className="h-5 w-5" />
-            <span className="absolute -top-0.5 -right-0.5 h-4 w-4 rounded-full bg-primary text-[10px] font-bold text-primary-foreground flex items-center justify-center">2</span>
+          <Link
+            to="/where-to-buy"
+            className="hidden md:inline-flex items-center gap-1.5 gradient-red text-primary-foreground px-4 py-2 rounded-full text-sm font-semibold shadow-red hover:scale-105 transition-smooth"
+          >
+            ซื้อเลย
           </Link>
           <button onClick={() => setOpen(!open)} className="lg:hidden p-2" aria-label="Menu">
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
