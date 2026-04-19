@@ -22,7 +22,7 @@ const contacts = [
   { icon: MessageCircle, label: "LINE",      val: "@easymix" },
   { icon: Facebook,      label: "Facebook",  val: "EasyMix Official" },
   { icon: Mail,          label: "Email",     val: "hello@easymix.co" },
-  { icon: MapPin, label: "ที่อยู่", val: "99, 99/1, 99/2 ฟ้าฮ่าม เมืองเชียงใหม่ เชียงใหม่ 50000" },
+  { icon: MapPin,        label: "ที่อยู่",   val: "99, 99/1, 99/2 ฟ้าฮ่าม เมืองเชียงใหม่ เชียงใหม่ 50000" },
 ];
 
 const Contact = () => {
@@ -85,7 +85,7 @@ const Contact = () => {
               <div className="aspect-[16/10] rounded-2xl overflow-hidden shadow-soft">
                 <iframe
                   title="แผนที่ Easy Mix"
-                  src="https://www.google.com/maps?q=ChiangMai&output=embed"
+                  src="https://www.google.com/maps?q=18.7682469,98.9760292&z=18&output=embed"
                   className="w-full h-full border-0"
                   loading="lazy"
                 />
