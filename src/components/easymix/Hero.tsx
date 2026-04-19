@@ -1,8 +1,8 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Autoplay from "embla-carousel-autoplay";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import heroKrapao from "@/assets/hero-krapao.jpg";
 import heroCurry from "@/assets/hero-curry.jpg";
 import heroFriedRice from "@/assets/hero-friedrice.jpg";
@@ -26,11 +26,25 @@ const slides = [
 
 const Hero = () => {
   const autoplay = useRef(Autoplay({ delay: 4500, stopOnInteraction: false }));
+  const [api, setApi] = useState<CarouselApi>();
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+    setSelectedIndex(api.selectedScrollSnap());
+    const onSelect = () => setSelectedIndex(api.selectedScrollSnap());
+    api.on("select", onSelect);
+    api.on("reInit", onSelect);
+    return () => {
+      api.off("select", onSelect);
+    };
+  }, [api]);
 
   return (
     <section id="home" className="relative overflow-hidden">
       <div className="relative h-[78vh] min-h-[520px] max-h-[760px] w-full">
         <Carousel
+          setApi={setApi}
           opts={{ loop: true }}
           plugins={[autoplay.current]}
           className="absolute inset-0 h-full w-full"
@@ -76,6 +90,23 @@ const Hero = () => {
               </Link>
             </div>
           </div>
+        </div>
+
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2.5 px-4 py-2 rounded-full bg-background/40 backdrop-blur-sm">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              aria-label={`ไปสไลด์ที่ ${i + 1}`}
+              aria-current={selectedIndex === i}
+              onClick={() => api?.scrollTo(i)}
+              className={`h-2.5 rounded-full transition-all ${
+                selectedIndex === i
+                  ? "w-8 bg-primary"
+                  : "w-2.5 bg-foreground/40 hover:bg-foreground/60"
+              }`}
+            />
+          ))}
         </div>
       </div>
     </section>
