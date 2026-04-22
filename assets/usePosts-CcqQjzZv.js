@@ -1,0 +1,1 @@
+import{u as a}from"./vendor-query-C9Uwi_IN.js";import{g as o}from"./index-ozfLAdhD.js";const m=e=>a({queryKey:["posts",e],queryFn:()=>o.posts.list({category:e,limit:50}),staleTime:1e3*60*5,select:s=>{var t;return((t=s.data)==null?void 0:t.items)??[]}}),p=e=>a({queryKey:["post",e],queryFn:()=>o.posts.get(e),enabled:!!e,staleTime:1e3*60*5,select:s=>s.data});export{p as a,m as u};
