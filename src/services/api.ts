@@ -4,7 +4,7 @@
  */
 import axios from "axios";
 
-const BASE = import.meta.env.VITE_API_URL ?? "http://localhost:5000";
+const BASE = import.meta.env.VITE_API_URL ?? "https://www.livemasterstudio.online/easy-mix";
 const http = axios.create({ baseURL: BASE });
 
 export interface ApiResponse<T> { success: boolean; data?: T; message: string }
